@@ -7,10 +7,8 @@ import { SeatPriceContext } from "./component/Context/SeatPriceContext";
 function App() {
   const [totalPrice, setTotalPrice] = useState([]);
   const totalAmount = totalPrice.reduce((sum, seat) => {
-    console.log("totalAmount", sum, seat);
     return sum + seat.price;
   }, 0);
-  console.log("totalAmount", totalAmount, totalPrice);
   return (
     <section className="md:w-full md:h-full md:bg-gray-50 grid grid-rows-2">
       <section className="w-full">
@@ -41,19 +39,12 @@ function App() {
       <section className="flex justify-center w-full m-3">
         <img src={screenIcon} alt="screen" className="h-[40px] " />
       </section>
-      {/* <footer className="md:flex justify-between item-center font-bold text-xl mt-4 p-4 border-t-2 border-gray-300 grid grid-rows-2 md:grid-cols-2">
-        <div>Total Price: ₹</div>
-
-        <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
-          Book Ticket
-        </button>
-      </footer> */}
       <footer className="text-center font-bold text-xl mt-4 fixed w-full bottom-0 bg-gray-800 h-35 p-4">
         <button
           type="buttton"
-          className="bg-blue-500 text-white font-semibold h-10 w-36 p-1 m-auto rounded"
+          className="bg-blue-500 text-white font-semibold h-15 w-40 p-1 m-auto rounded"
         >
-          Total Price: ₹{totalAmount}
+          Book Now: ₹{totalAmount}
         </button>
       </footer>
     </section>
