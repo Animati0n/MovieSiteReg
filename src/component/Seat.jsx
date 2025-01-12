@@ -14,11 +14,16 @@ export default function Seat({ label, value }) {
     }
   }, [totalPrice]);
   const selectedType = totalPrice.every((seatType) => type == seatType.type);
+  // const bgColor = {
+  //   platinum: "bg-platinum text-black",
+  //   gold: "bg-gold text-white",
+  //   silver: "bg-silver text-white",
+  // };
   return (
     <>
       <label
         htmlFor={`seat-${value}`}
-        className={`mx-4 box-border hover:cursor-pointer h-10 w-10 p-2 border-1 border-gray-500  rounded text-center text-white hover:bg-green-600 hover:outline-1 hover:outline-green-600  ${active}`}
+        className={`mx-4 box-border hover:cursor-pointer h-10 w-10 p-2 border-1 border-gray-500  rounded text-center  text-white hover:bg-green-600 hover:border-white ${active}`}
       >
         {label}
       </label>
@@ -30,7 +35,7 @@ export default function Seat({ label, value }) {
         onChange={(e) => {
           if (totalPrice.length < 8 && e.target.checked && selectedType) {
             setActive("bg-green-600");
-            setTotalPrice((prev) => [...prev, { price, type, value }]);
+            setTotalPrice((prev) => [...prev, { price, type, label }]);
             setChecked(true);
           }
           if (
@@ -48,7 +53,7 @@ export default function Seat({ label, value }) {
           if (totalPrice.length <= 8 && !e.target.checked && selectedType) {
             setActive("bg-gray-600");
             setTotalPrice((prev) => [
-              ...prev.filter((obj) => obj.value !== value),
+              ...prev.filter((obj) => obj.label !== label),
             ]);
             setChecked(false);
           }
